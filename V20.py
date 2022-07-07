@@ -54,7 +54,7 @@ def loca(lista, string):  #string es una lista
                     del fix[a+1]
         a = a+1
     return fix
-
+# \biggl[
 f = loca(f, [ "\\", '{'])
 f = loca(f, [ "\\", '}'])
 f = loca(f, [ "\\", "[" ])
@@ -66,6 +66,14 @@ f = loca(f, ["\\", "e", "n", "d", "{", "a", "l", "i", "g", "n", "*", "}"])
 f = loca(f, ["$", "$"])
 f = loca(f, ["\\", "l", "e", "f", "t", "("])
 f = loca(f, ["\\", "r", "i", "g", "h", "t", ")"])
+f = loca(f, ["\\", "b", "i", "g", "g", "l", "["])
+f = loca(f, ["\\", "b", "i", "g", "g", "r", "]"])
+f = loca(f, ["\\", "B", "i", "g", "g", "l", "["])
+f = loca(f, ["\\", "B", "i", "g", "g", "r", "]"])
+f = loca(f, ["\\", "b", "i", "g", "l", "["])
+f = loca(f, ["\\", "b", "i", "g", "r", "]"])
+f = loca(f, ["\\", "B", "i", "g", "l", "["])
+f = loca(f, ["\\", "B", "i", "g", "r", "]"])
 f = loca(f, ["\\", "v", "e", "r", "t"])
 f = loca(f, ["\\", "m", "i", "d"])
 print("Se han unido los strings importantes")
@@ -272,7 +280,90 @@ def empbigpar(s):
         t = int(tracker(biglefts, position, bigrights[q]))
         tuplas.append((position, bigrights[q+t] ))
     return tuplas
+    
+par = empbigpar(f):
 
+def empBigcor(s):
+    bigleft = "\\Bigl["
+    bigright = "\\Bigr]"
+    biglefts = []
+    bigrights = []
+    a = 0
+    for item in s:
+        if dolar(a):
+            if item == bigleft:
+                biglefts.append(a)
+            if item == bigright:
+                bigrights.append(a)
+        a = a+1
+    tuplas = []
+    for position in biglefts:
+        q = int(least(position, bigrights))
+        t = int(tracker(biglefts, position, bigrights[q]))
+        tuplas.append((position, bigrights[q+t] ))
+    return tuplas
+Big = empBigcor(f):    
+def empbigcor(s):
+    bigleft = "\\bigl["
+    bigright = "\\bigr]"
+    biglefts = []
+    bigrights = []
+    a = 0
+    for item in s:
+        if dolar(a):
+            if item == bigleft:
+                biglefts.append(a)
+            if item == bigright:
+                bigrights.append(a)
+        a = a+1
+    tuplas = []
+    for position in biglefts:
+        q = int(least(position, bigrights))
+        t = int(tracker(biglefts, position, bigrights[q]))
+        tuplas.append((position, bigrights[q+t] ))
+    return tuplas  
+big = empbigcor(f):
+    
+def empBiggcor(s):
+    bigleft = "\\Biggl["
+    bigright = "\\Biggr]"
+    biglefts = []
+    bigrights = []
+    a = 0
+    for item in s:
+        if dolar(a):
+            if item == bigleft:
+                biglefts.append(a)
+            if item == bigright:
+                bigrights.append(a)
+        a = a+1
+    tuplas = []
+    for position in biglefts:
+        q = int(least(position, bigrights))
+        t = int(tracker(biglefts, position, bigrights[q]))
+        tuplas.append((position, bigrights[q+t] ))
+    return tuplas
+Bigg = empBiggcor(f):    
+def empbiggcor(s):
+    bigleft = "\\biggl["
+    bigright = "\\biggr]"
+    biglefts = []
+    bigrights = []
+    a = 0
+    for item in s:
+        if dolar(a):
+            if item == bigleft:
+                biglefts.append(a)
+            if item == bigright:
+                bigrights.append(a)
+        a = a+1
+    tuplas = []
+    for position in biglefts:
+        q = int(least(position, bigrights))
+        t = int(tracker(biglefts, position, bigrights[q]))
+        tuplas.append((position, bigrights[q+t] ))
+    return tuplas         
+bigg = empbiggcor(f):
 
 # In[11]:
 
@@ -386,6 +477,10 @@ y = faq(x, cor)
 print("Done with corchetes")
 z = faq(y, par)
 print("Done with parentesis")
+z = faq(z, big)
+z = faq(z, bigg)
+z = faq(z, Big)
+z = faq(z, Bigg)
 tt = sign(z)
 t = comeback(tt)
 print("Regresando a la normalidad")
@@ -401,7 +496,6 @@ with open(f"{tb}.tex", "w") as rt:
 
 
 # In[ ]:
-
 
 
 
