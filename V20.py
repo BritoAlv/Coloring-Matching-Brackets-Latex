@@ -76,6 +76,9 @@ f = loca(f, ["\\", "B", "i", "g", "l", "["])
 f = loca(f, ["\\", "B", "i", "g", "r", "]"])
 f = loca(f, ["\\", "v", "e", "r", "t"])
 f = loca(f, ["\\", "m", "i", "d"])
+f = loca(f, ["\\", "w", "e", "d", "g", "e"])
+f = loca(f, ["\\", "l", "o", "r"])
+f = loca(f, ["\\", "v", "d", "a", "s", "h"])
 print("Se han unido los strings importantes")
 
 
@@ -281,7 +284,7 @@ def empbigpar(s):
         tuplas.append((position, bigrights[q+t] ))
     return tuplas
     
-par = empbigpar(f):
+par = empbigpar(f)
 
 def empBigcor(s):
     bigleft = "\\Bigl["
@@ -302,7 +305,7 @@ def empBigcor(s):
         t = int(tracker(biglefts, position, bigrights[q]))
         tuplas.append((position, bigrights[q+t] ))
     return tuplas
-Big = empBigcor(f):    
+Big = empBigcor(f)    
 def empbigcor(s):
     bigleft = "\\bigl["
     bigright = "\\bigr]"
@@ -322,7 +325,7 @@ def empbigcor(s):
         t = int(tracker(biglefts, position, bigrights[q]))
         tuplas.append((position, bigrights[q+t] ))
     return tuplas  
-big = empbigcor(f):
+big = empbigcor(f)
     
 def empBiggcor(s):
     bigleft = "\\Biggl["
@@ -343,7 +346,9 @@ def empBiggcor(s):
         t = int(tracker(biglefts, position, bigrights[q]))
         tuplas.append((position, bigrights[q+t] ))
     return tuplas
-Bigg = empBiggcor(f):    
+    
+Bigg = empBiggcor(f)
+
 def empbiggcor(s):
     bigleft = "\\biggl["
     bigright = "\\biggr]"
@@ -363,7 +368,7 @@ def empbiggcor(s):
         t = int(tracker(biglefts, position, bigrights[q]))
         tuplas.append((position, bigrights[q+t] ))
     return tuplas         
-bigg = empbiggcor(f):
+bigg = empbiggcor(f)
 
 # In[11]:
 
@@ -451,6 +456,12 @@ def sign(s):
                 r[-1] = r"\textcolor{MaterialPurple900}{\vert}"	
             elif item == "\\mid":
                 r[-1] = r"\textcolor{MaterialPurple900}{\mid}"
+            elif item == "\\wedge":
+                r[-1] = r"\textcolor{MaterialRed900}{\wedge}"
+            elif item == "\\lor":
+                r[-1] = r"\textcolor{MaterialBlue900}{\lor}"
+            elif item == "\\vdash":
+                r[-1] = r"\textcolor{MaterialPurple900}{\vdash}"                                                
         asd = asd + 1    
 
     return r				  				
